@@ -1,23 +1,22 @@
-from random import randrange
+import random
 
-DESCRIPTION = "What number is missing in the progression?"
-
-
-def make_progression():
-    number = randrange(1, 50, 1)
-    step = randrange(1, 10, 1)
-    length = randrange(5, 11)
-    progression = []
-    for x in range(length):
-        progression.append(number)
-        number += step
-    return progression
+DESCRIPTION = 'What number is missing in the progression?'
 
 
-def generate_round():
-    progression = make_progression()
-    number_for_question = randrange(len(progression))
-    answer = str(progression[number_for_question])
-    progression[number_for_question] = '..'
-    question = ' '.join(map(str, progression))
-    return answer, question
+def generate_round() -> tuple:
+    start_number = random.randint(1, 100)
+    step = random.randint(2, 9)
+
+    progression_length = 10
+    progression_end = start_number + (step * progression_length)
+    progression = list(range(
+        start_number,
+        progression_end,
+        step)
+    )
+
+    answer = progression[step]
+    progression[step] = '..'
+    question = " ".join(map(str, progression))
+
+    return question, str(answer)
