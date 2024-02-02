@@ -4,21 +4,21 @@ DESCRIPTION = 'What number is missing in the progression?'
 
 
 def generate_round():
-    list = []
+    lst = []
     step = random.randint(1, 10)
-    num1 = random.randint(0, 100)
-    return progression(num1, step, list)
+    number1 = random.randint(0, 100)
+    return progression(number1, step, lst)
 
 
-def progression(num1, step, list):
-    while len(list) < 10:
-        list.append(str(num1))
-        num1 += step
-    index = random.randint(0, 9)
-    result = list[index]
-    b = ".."
-    list[index] = b
+def progression(number1, step, lst):
+    while len(lst) < 10:
+        lst.append(str(number1))
+        number1 += step
+    index = random.randint(0, 100)
+    result: object = lst[index]
+    b = '..'
+    lst[index] = b
     a = ''
-    for i in range(len(list)):
-        a = ' '.join(list)
-    return a, result
+    for i in range(len(lst)):
+        a = ' '.join(lst)
+        return a, result
